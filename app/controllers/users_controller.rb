@@ -20,12 +20,17 @@ class UsersController < ApplicationController
   get '/:username/edit' do
     # only allow to edit their own account.
     redirect_if_not_logged_in do
-      erb :'users/new'
+      erb :'users/edit'
     end
   end
 
   patch '/:username' do
-    #modify account here
+    user = User.find_by(username: params[:username])
+    user.username = params[:user][:username]
+    user.name = params[:user][:name]
+    user.password = params[:user][:password] unless params[:user][:password] == ""
+    user.save
+    redirect "/#{user.username}/edit"
   end
 
 end

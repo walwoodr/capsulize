@@ -9,7 +9,7 @@ class ClothingCategoryController < ApplicationController
 
   post '/categories' do
     category = ClothingCategory.create(params)
-    redirect '/categories'
+    redirect '/clothes/new'
   end
 
   #Read - only read list

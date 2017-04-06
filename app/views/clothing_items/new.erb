@@ -12,6 +12,6 @@
   <% ClothingCategory.all.each do |category| %>
   <input type="radio" name="clothing_category_id" value="<%= category.id %>"><%= category.name %>
   <% end %><br>
-  <a href="/category/new">Create Category</a><br></br>
+  <a href="/categories/new">Create Category</a><br></br>
   <input type="submit" value="Create Clothing Item">
 </form>

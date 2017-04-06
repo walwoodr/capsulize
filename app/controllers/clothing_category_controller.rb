@@ -8,7 +8,8 @@ class ClothingCategoryController < ApplicationController
   end
 
   post '/categories' do
-    #process form input
+    category = ClothingCategory.create(params)
+    redirect '/categories'
   end
 
   #Read - only read list
@@ -29,9 +30,10 @@ class ClothingCategoryController < ApplicationController
     # process form input
   end
 
-  #Delete - only delete if there are no clothes associated.
+  #Delete
 
   delete '/categories/:id' do
+    # only delete if there are no clothes associated.
     # process form input
   end
 

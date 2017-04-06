@@ -5,4 +5,8 @@ class ClothingItem < ActiveRecord::Base
   belongs_to :clothing_category
   validates_presence_of :name, :clothing_category, :color, :fanciness
 
+  def belongs_to_user?(user)
+    user.clothing_items.exists?(self)
+  end
+
 end

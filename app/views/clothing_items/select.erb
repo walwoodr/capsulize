@@ -1,0 +1,9 @@
+<h2>Select an existing clothing item.</h2>
+
+<ul>
+<% ClothingItem.all.each do |clothing_item| %>
+  <% if !clothing_item.belongs_to_user?(current_user) %>
+  <li><%= clothing_item.name %> - <%= clothing_item.color %>, <%= clothing_item.fanciness %> fanciness - <a href="/select/<%= clothing_item.id %>"></a></li>
+  <% end %>
+<% end %>
+</ul>

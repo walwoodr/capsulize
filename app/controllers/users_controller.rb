@@ -17,4 +17,15 @@ class UsersController < ApplicationController
     redirect '/clothes'
   end
 
+  get '/:username/edit' do
+    # only allow to edit their own account.
+    redirect_if_not_logged_in do
+      erb :'users/new'
+    end
+  end
+
+  patch '/:username' do
+    #modify account here
+  end
+
 end

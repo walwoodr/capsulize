@@ -36,6 +36,14 @@ class ApplicationController < Sinatra::Base
     def current_user
       User.find(session[:user_id])
     end
+
+    def redirect_if_not_logged_in
+      if is_logged_in?
+        yield if block_given?
+      else
+        redirect '/'
+      end
+    end
   end
 
 end

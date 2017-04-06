@@ -1,11 +1,9 @@
 class ClothingItemController < ApplicationController
 
   get '/clothes' do
-    if is_logged_in?
+    redirect_if_not_logged_in do
       @user = User.find(session[:user_id])
       erb :'clothing_items/index'
-    else
-      redirect '/login'
     end
   end
 

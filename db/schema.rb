@@ -10,11 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404214650) do
+ActiveRecord::Schema.define(version: 20170404215709) do
+
+  create_table "clothing_categories", force: :cascade do |t|
+    t.text "name"
+  end
+
+  create_table "clothing_items", force: :cascade do |t|
+    t.text    "name"
+    t.text    "color"
+    t.text    "fanciness"
+    t.integer "clothing_category_id"
+  end
+
+  create_table "user_clothing_items", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "clothing_item_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.text "username"
-    t.text "password"
+    t.text "password_digest"
     t.text "name"
   end
 

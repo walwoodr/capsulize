@@ -7,4 +7,14 @@ class ClothingItemController < ApplicationController
     end
   end
 
+  get '/clothes/new' do
+    redirect_if_not_logged_in do
+      erb :'clothing_items/new'
+    end
+  end
+
+  post '/clothes' do
+    raise params.inspect
+  end
+
 end

@@ -12,7 +12,7 @@
   <td><%= clothing_item.fanciness %></td>
   <td><%= clothing_item.clothing_category.name if clothing_item.clothing_category %></td>
 </table>
-<a href="/clothes/<%= clothing_item.id %>/edit">Edit</a>
+<a href="/clothes/<%= clothing_item.id %>/edit">Edit</a> <a href="/clothes/<%= clothing_item.id %>/remove">Remove</a>
 </div>
 
 <% end %>

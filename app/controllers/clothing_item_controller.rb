@@ -20,14 +20,17 @@ class ClothingItemController < ApplicationController
   end
 
   post '/clothes/:id/select' do
-    cloth_item = ClothingItem.find(params[:id])
-    current_user.clothing_items << cloth_item
-    cloth_item.save
+    clothing_item = ClothingItem.find(params[:id])
+    current_user.clothing_items << clothing_item
+    clothing_item.save
     redirect '/clothes/select'
   end
 
-# remove clothing item from your list
-    # current_user.clothing_items.delete(clothing_item)
+  get '/clothes/:id/remove' do
+    clothing_item = ClothingItem.find(params[:id])
+    current_user.clothing_items.delete(clothing_item)
+    redirect '/clothes'
+  end
 
   post '/clothes' do
     # this is much messier than I'd like it to be.

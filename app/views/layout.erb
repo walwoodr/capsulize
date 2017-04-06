@@ -9,6 +9,7 @@
     <div id="header" class="clearfix">
       <h1>Capsulize</h1>
       <a href="/">Home</a>
+      <%=  '<a href="/logout">Log out</a>' if is_logged_in? %>
     </div>
     <%= yield %>
   </body>

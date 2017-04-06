@@ -1,6 +1,6 @@
 <h2>Create new Clothing</h2>
 
-<form action="/clothes/new" method="post">
+<form action="/clothes" method="post">
   <label for="name">Name</label><br>
   <input type="text" id="name" name="clothing_item[name]"><br></br>
   <label for="color">Color</label><br>
@@ -10,7 +10,7 @@
 
   <!-- Category selection -->
   <% ClothingCategory.all.each do |category| %>
-  <input type="radio" name="clothing_item[:clothing_category_id]" value="<%= category.id %>"><%= category.name %>
+  <input type="radio" name="clothing_category_id" value="<%= category.id %>"><%= category.name %>
   <% end %><br>
   <a href="/category/new">Create Category</a><br></br>
   <input type="submit" value="Create Clothing Item">

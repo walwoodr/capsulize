@@ -14,7 +14,11 @@ class ClothingItemController < ApplicationController
   end
 
   post '/clothes' do
-    raise params.inspect
+    clothing_item = ClothingItem.new(params[:clothing_item])
+    clothing_item.clothing_category = ClothingCategory.find(params[:clothing_category_id])
+    clothing_item.users << current_user
+    clothing_item.save
+    redirect '/clothes'
   end
 
 end

@@ -15,6 +15,7 @@ GEM
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
+    bcrypt (3.1.11)
     capybara (2.13.0)
       addressable
       mime-types (>= 1.16)
@@ -88,6 +89,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  bcrypt
   capybara
   pry
   rack-test

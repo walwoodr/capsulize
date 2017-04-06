@@ -34,9 +34,11 @@ class ClothingItemController < ApplicationController
 
   post '/clothes' do
     # this is much messier than I'd like it to be.
+    binding.pry
     clothing_item = ClothingItem.new(params[:clothing_item])
     clothing_item.clothing_category = ClothingCategory.find(params[:clothing_category_id])
     clothing_item.users << current_user
+    binding.pry
     clothing_item.save
     redirect '/clothes'
   end

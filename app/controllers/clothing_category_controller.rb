@@ -22,19 +22,22 @@ class ClothingCategoryController < ApplicationController
   #Update - update name only
   get '/categories/:id/edit' do
     redirect_if_not_logged_in do
+      @category = ClothingCategory.find(params[:id])
       erb :'categories/edit'
     end
   end
 
   patch '/categories/:id' do
+
     # process form input
   end
 
   #Delete
 
   delete '/categories/:id' do
-    # only delete if there are no clothes associated.
-    # process form input
+    category = ClothingCategory.find(params[:id])
+    category.delete
+    redirect '/categories'
   end
 
 end

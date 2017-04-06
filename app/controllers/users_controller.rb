@@ -4,8 +4,4 @@ class UsersController < ApplicationController
     erb :'users/index'
   end
 
-  get '/login' do
-    erb :login
-  end
-
 end

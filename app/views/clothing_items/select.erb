@@ -3,7 +3,11 @@
 <ul>
 <% ClothingItem.all.each do |clothing_item| %>
   <% if !clothing_item.belongs_to_user?(current_user) %>
-  <li><%= clothing_item.name %> - <%= clothing_item.color %>, <%= clothing_item.fanciness %> fanciness - <a href="/select/<%= clothing_item.id %>"></a></li>
+  <li><%= clothing_item.name %> - <%= clothing_item.color %>, <%= clothing_item.fanciness %> fanciness
+    <form action="/clothes/<%= clothing_item.id %>/select" method="post">
+      <input type="submit" value="Select">
+    </form>
+  </li><br>
   <% end %>
 <% end %>
 </ul>

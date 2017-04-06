@@ -19,6 +19,16 @@ class ClothingItemController < ApplicationController
     end
   end
 
+  post '/clothes/:id/select' do
+    cloth_item = ClothingItem.find(params[:id])
+    current_user.clothing_items << cloth_item
+    cloth_item.save
+    redirect '/clothes/select'
+  end
+
+# remove clothing item from your list
+    # current_user.clothing_items.delete(clothing_item)
+
   post '/clothes' do
     # this is much messier than I'd like it to be.
     clothing_item = ClothingItem.new(params[:clothing_item])

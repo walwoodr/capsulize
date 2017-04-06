@@ -10,6 +10,7 @@
       <h1>Capsulize</h1>
       <a href="/">Home</a>
       <%=  '<a href="/logout">Log out</a>' if is_logged_in? %>
+      <%=  '<a href="/login">Log in</a>' if !is_logged_in? %>
     </div>
     <%= yield %>
   </body>

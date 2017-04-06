@@ -28,8 +28,10 @@ class ClothingCategoryController < ApplicationController
   end
 
   patch '/categories/:id' do
-
-    # process form input
+    category = ClothingCategory.find(params[:id])
+    category.update(params[:category])
+    category.save
+    redirect '/categories'
   end
 
   #Delete

@@ -1,3 +1,17 @@
 <h1>Edit Category</h1>
 
-<!-- delete button should be on this page. -->
+<form action="/categories/<%= @category.id %>" method="post">
+  <input type="hidden" name="_method" value="patch" id="hidden">
+  <label for="name">Category Name</label>
+  <input type="text" id="name" name="category[name]" value="<%= @category.name %>">
+  <input type="submit" value="Change Category">
+</form><br>
+
+<% if @category.deletable? %>
+<form action="/categories/<%= @category.id %>" method="post">
+  <input type="hidden" name="_method" id="hidden" value="delete">
+  <input type="submit" value="Delete">
+</form>
+<% else %>
+<p>This category cannot be deleted because it has clothing items associated with it.</p>
+<% end %>

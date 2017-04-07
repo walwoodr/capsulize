@@ -1,1 +1,16 @@
 <h2>Outfits</h2>
+
+<% current_user.outfits.each do |outfit| %>
+
+<div class="outfit">
+  <h3><%= outfit.name %></h3>
+  <a href="/outfits/<%= outfit.id %>/edit">Edit</a>
+  <ul>
+    <% outfit.clothing_items.each do |clothing_item| %>
+    <li><%= clothing_item.name %> - <%= clothing_item.clothing_category.name %></li>
+    <% end %>
+  </ul>
+
+</div>
+
+<% end %>

@@ -48,7 +48,9 @@ class OutfitController < ApplicationController
   end
 
   delete '/outfits/:id' do
-    # delete outfit
+    outfit = Outfit.find(params[:id])
+    outfit.delete
+    redirect '/outfits'
   end
 
 end

@@ -45,6 +45,7 @@ class ApplicationController < Sinatra::Base
       if is_logged_in?
         yield if block_given?
       else
+        flash[:message] = "You must be logged in to access the application."
         redirect '/'
       end
     end

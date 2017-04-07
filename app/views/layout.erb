@@ -9,7 +9,7 @@
     <div id="header" class="clearfix">
       <h1><a href="/">Capsulize</a></h1>
       <% if is_logged_in? %>
-      <a href="/clothes"><%= current_user.name %>'s clothes</a> 
+      <a href="/clothes"><%= current_user.name %>'s clothes</a>
       <% end %>
       <%=  '<a href="/logout">Log out</a>' if is_logged_in? %>
       <%=  '<a href="/login">Log in</a>' if !is_logged_in? %>

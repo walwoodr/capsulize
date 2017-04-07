@@ -24,6 +24,7 @@ class OutfitController < ApplicationController
 
   get '/outfits/:id' do
     redirect_if_not_logged_in do
+      @outfit = Outfit.find(params[:id])
       erb :'outfits/show'
     end
   end
@@ -38,6 +39,7 @@ class OutfitController < ApplicationController
   patch '/outfits/:id' do
     outfit = Outfit.find(params[:id])
     outfit.name = params[:name]
+    outfit.clothing_items.clear
     params[:clothing_items].each do |clothing_item|
       outfit.clothing_items << ClothingItem.find(clothing_item)
     end

@@ -36,8 +36,13 @@ class OutfitController < ApplicationController
   end
 
   patch '/outfits/:id' do
-    raise params.inspect
-    # change outfit
+    outfit = Outfit.find(params[:id])
+    outfit.name = params[:name]
+    params[:clothing_items].each do |clothing_item|
+      outfit.clothing_items << ClothingItem.find(clothing_item)
+    end
+    outfit.save
+    redirect "/outfits/#{params[:id]}"
   end
 
   delete '/outfits/:id' do

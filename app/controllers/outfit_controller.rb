@@ -18,7 +18,6 @@ class OutfitController < ApplicationController
     params[:clothing_items].each do |clothing_item|
       outfit.clothing_items << ClothingItem.find(clothing_item)
     end
-    binding.pry
     outfit.save
     redirect '/outfits'
   end
@@ -31,11 +30,13 @@ class OutfitController < ApplicationController
 
   get '/outfits/:id/edit' do
     redirect_if_not_logged_in do
+      @outfit = Outfit.find(params[:id])
       erb :'outfits/edit'
     end
   end
 
   patch '/outfits/:id' do
+    raise params.inspect
     # change outfit
   end
 

@@ -12,9 +12,15 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    user = User.create(params[:user])
-    session[:user_id] = user.id
-    redirect '/clothes'
+    user = User.new(params[:user])
+    if user.valid?
+      user.save
+      session[:user_id] = user.id
+      redirect '/clothes'
+    else
+      flash[:message] = "You must give your name, username and password to sign up."
+      redirect '/signup'
+    end
   end
 
   get '/:username/edit' do

@@ -3,10 +3,10 @@
 <form action="/outfits" method="post">
   <label>Add items to the outfit:</label><br>
   <% current_user.clothing_items.each do |clothing_item| %>
-    <input type="checkbox" name="outfit[clothing_item]" value="<%= clothing_item.id %>"><%= clothing_item.name %> - <%= clothing_item.clothing_category.name %></input>
+    <input type="checkbox" name="clothing_items[]" value="<%= clothing_item.id %>"><%= clothing_item.name %> - <%= clothing_item.clothing_category.name %></input>
   <% end %>
   <br></br>
   <label for="name">Outfit nickname</label><br>
-  <input type="text" name="outfit[name]" id="name"><br><br>
+  <input type="text" name="name" id="name"><br><br>
   <input type="submit" value="Create Outfit">
 </form>

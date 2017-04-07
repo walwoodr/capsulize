@@ -13,7 +13,14 @@ class OutfitController < ApplicationController
   end
 
   post '/outfits' do
-    # create new outfit
+    outfit = current_user.outfits.build
+    outfit.name = params[:name]
+    params[:clothing_items].each do |clothing_item|
+      outfit.clothing_items << ClothingItem.find(clothing_item)
+    end
+    binding.pry
+    outfit.save
+    redirect '/outfits'
   end
 
   get '/outfits/:id' do

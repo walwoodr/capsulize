@@ -1,9 +1,12 @@
+require 'sinatra/base'
+require 'rack-flash'
 class ApplicationController < Sinatra::Base
 
   set :views, Proc.new { File.join(root, "../views/") }
   set :public_dir, "public"
   enable :sessions
   set :session_secret, "cloche_hat_is_best_hat"
+  use Rack::Flash
 
   get '/' do
     erb :index
@@ -19,6 +22,7 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = user.id
       redirect '/clothes'
     else
+      flash[:message] = "Invalid username and password combination."
       redirect '/login'
     end
   end

@@ -1,5 +1,9 @@
 <h2>Create new Clothing</h2>
 
+<% if flash.has?(:message) %>
+  <%= flash[:message] %> <br></br>
+<% end %>
+
 <form action="/clothes" method="post">
   <label for="name">Name</label><br>
   <input type="text" id="name" name="clothing_item[name]"><br></br>

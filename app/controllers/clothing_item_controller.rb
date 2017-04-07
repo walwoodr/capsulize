@@ -13,6 +13,20 @@ class ClothingItemController < ApplicationController
     end
   end
 
+  post '/clothes' do
+    # this is much messier than I'd like it to be.
+    clothing_item = ClothingItem.new(params[:clothing_item])
+    clothing_item.clothing_category = ClothingCategory.find(params[:clothing_category_id])
+    clothing_item.users << current_user
+    if clothing_item.valid?
+      clothing_item.save
+      redirect '/clothes'
+    else
+      flash[:message]="Your clothing item must have all fields filled to be created."
+      redirect '/clothes/new'
+    end
+  end
+
   get '/clothes/select' do
     redirect_if_not_logged_in do
       erb :'clothing_items/select'
@@ -29,15 +43,6 @@ class ClothingItemController < ApplicationController
   get '/clothes/:id/remove' do
     clothing_item = ClothingItem.find(params[:id])
     current_user.clothing_items.delete(clothing_item)
-    redirect '/clothes'
-  end
-
-  post '/clothes' do
-    # this is much messier than I'd like it to be.
-    clothing_item = ClothingItem.new(params[:clothing_item])
-    clothing_item.clothing_category = ClothingCategory.find(params[:clothing_category_id])
-    clothing_item.users << current_user
-    clothing_item.save
     redirect '/clothes'
   end
 

@@ -1,6 +1,6 @@
 <h2>Modify outfit</h2>
 
-<% if @outfit.user = current_user %>
+<% if @outfit.user == current_user %>
 
 <form action="/outfits/<%= @outfit.id %>" method="post">
   <input type="hidden" name="_method" value="patch" id="hidden">
@@ -14,5 +14,8 @@
   <input type="submit" value="Edit Outfit">
 </form>
 
+<% else %>
+
+<p>This isn't your outfit. Take a look at <a href="/outfits">your outfits</a> to create or edit an outfit.</p>
 
 <% end %>

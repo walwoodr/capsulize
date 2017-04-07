@@ -1,5 +1,6 @@
 <h2><%= @outfit.name %></h2>
 
+<a href="/outfits/<%= @outfit.id %>/edit">Edit outfit</a>
 
 <% @outfit.clothing_items.each do |clothing_item| %>
 

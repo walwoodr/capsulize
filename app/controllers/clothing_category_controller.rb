@@ -8,8 +8,13 @@ class ClothingCategoryController < ApplicationController
   end
 
   post '/categories' do
-    category = ClothingCategory.create(params)
-    redirect '/clothes/new'
+    if params[:name] != ""
+     category = ClothingCategory.create(params)
+     redirect '/clothes/new'
+   else
+     flash[:message] = "A new category cannot be created without a name."
+     redirect '/categories/new'
+   end
   end
 
   #Read - only read list

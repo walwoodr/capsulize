@@ -6,9 +6,9 @@
 
 <form action="/signup" method="post">
   <label for="name">Name</label><br>
-  <input type="text" name="user[name]"><br></br>
+  <input type="text" name="user[name]" value="<%= @user.name %>" /><br></br>
   <label for="username">Username</label><br>
-  <input type="text" name="user[username]"><br></br>
+  <input type="text" name="user[username]" value="<%= @user.username %>" ><br></br>
   <label for="password">Password</label><br>
   <input type="password" name="user[password]"><br></br>
   <input type="submit" value="Create Account">

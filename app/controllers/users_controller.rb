@@ -8,18 +8,18 @@ class UsersController < ApplicationController
     if is_logged_in?
       redirect '/'
     end
+    @user = User.new(params[:user])
     erb :'users/new'
   end
 
   post '/signup' do
-    user = User.new(params[:user])
-    if user.valid?
-      user.save
+    @user = User.new(params[:user])
+    if @user.save
       session[:user_id] = user.id
       redirect '/clothes'
     else
-      flash[:message] = "You must give your name, username and password to sign up."
-      redirect '/signup'
+      flash[:message] = @user.errors.full_messages.join(", ")
+      erb :'users/new'
     end
   end
 
@@ -32,10 +32,11 @@ class UsersController < ApplicationController
 
   patch '/:username' do
     user = User.find_by(username: params[:username])
-    user.username = params[:user][:username]
-    user.name = params[:user][:name]
-    user.password = params[:user][:password] unless params[:user][:password] == ""
-    user.save
+    # user.username = params[:user][:username]
+    # user.name = params[:user][:name]
+    # user.password = params[:user][:password] unless params[:user][:password] == ""
+    # user.save
+    user.update(params[:user])
     redirect "/#{user.username}/edit"
   end
 
